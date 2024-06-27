@@ -1,7 +1,7 @@
 import json
 import asyncio
 from functions import playwright_translator, replace_strings_in_object
-
+import time
 
 # target main text:"lRu31"
 # target extra texts[]:{target:"lrSgmd",source:"W5CUef"}
@@ -24,12 +24,14 @@ async def main():
             source_lang=source_lang, target_lang=target_lang, source_text=source_text
         )
 
+    tick = time.time()
     wrapped_replace_strings = replace_strings_in_object(translator_with_lang)
     await wrapped_replace_strings(translation_object)
 
     translation_object_str = json.dumps(translation_object, ensure_ascii=False)
     with open(f"{target_lang}.json", "w", encoding="utf-8") as f:
         f.write(translation_object_str)
+    print(f"Total time taken {time.time()-tick}s")
 
 
 asyncio.run(main())

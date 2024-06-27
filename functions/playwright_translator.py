@@ -1,5 +1,6 @@
 from playwright.async_api import async_playwright
 from playwright_stealth import stealth_async
+import time
 
 
 def format_log(text):
@@ -11,6 +12,7 @@ def format_log(text):
 
 async def playwright_translator(source_lang: str, target_lang: str, source_text: str):
     print(f"Translating {format_log(source_text)}, please wait...!")
+    text_tick = time.time()
     async with async_playwright() as p:
         for browser_type in [p.chromium]:
             browser = await browser_type.launch()
@@ -28,7 +30,9 @@ async def playwright_translator(source_lang: str, target_lang: str, source_text:
             target_text = await elements[0].inner_text()
             await browser.close()
             # print("target_text:", target_text)
-            print(f"Translated to {format_log(target_text)}")
+            print(
+                f"Translated to {format_log(target_text)}. Took {time.time()-text_tick}s"
+            )
             return target_text
 
 
