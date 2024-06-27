@@ -2,6 +2,7 @@ import json
 import asyncio
 from functions import playwright_translator, replace_strings_in_object
 import time
+from pypeepa import signature
 
 # target main text:"lRu31"
 # target extra texts[]:{target:"lrSgmd",source:"W5CUef"}
@@ -19,14 +20,16 @@ translation_object = {
 
 
 async def main():
+    signature("\nNext-Intl Auto Translator")
+
     async def translator_with_lang(source_text: str) -> str:
         return await playwright_translator(
             source_lang=source_lang, target_lang=target_lang, source_text=source_text
         )
 
     tick = time.time()
-    wrapped_replace_strings = replace_strings_in_object(translator_with_lang)
-    await wrapped_replace_strings(translation_object)
+    replace_strings = replace_strings_in_object(translator_with_lang)
+    await replace_strings(translation_object)
 
     translation_object_str = json.dumps(translation_object, ensure_ascii=False)
     with open(f"{target_lang}.json", "w", encoding="utf-8") as f:
