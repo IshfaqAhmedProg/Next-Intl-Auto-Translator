@@ -65,7 +65,7 @@ async def playwright_translator(
             target_elements = []
             if translate_engine == "Deepl":
                 target_element_selector = '[name="target"] span:first-of-type'
-                # This is used because Deepl by default will have .dl_disabled but we want it not to have .dl_disabled
+                # This is used because the target_element by default will have .dl_disabled but we want it not to have .dl_disabled
                 undesired_class = "dl_disabled"
                 await page.goto(
                     f"https://www.deepl.com/en/translator#{source_lang}/{target_lang}/{safe_source_text}"

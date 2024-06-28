@@ -6,20 +6,43 @@ from functions import (
     remove_tag_elements,
 )
 import time
-from pypeepa import signature, getFilePath, readJSON
+from pypeepa import (
+    signature,
+    getFilePath,
+    readJSON,
+    askSelectOptionQuestion,
+    printArray,
+)
 import re
 
 
 source_lang = "en"
-target_lang = "ar"
 translate_engine = "Deepl"
+translate_engines = ["Google", "Deepl"]
 
 
 async def main():
     signature("\nNext-Intl Auto Translator")
+
+    # Get all the user inputs
     source_file = getFilePath(
-        "Enter the path of the json file containing the source text: ", ".json"
+        "\nEnter the path of the json file containing the source text:\n", ".json"
     )
+    source_lang = input(
+        "\nEnter the language of your source text in ISO-639 format (Defaults to 'en'):\neg:- 'en' for English, 'ar' for Arabic\n"
+    )
+    target_lang = input(
+        "\nEnter the language of your target text in ISO-639 format:\neg:- 'en' for English, 'ar' for Arabic\n"
+    )
+    print("\n")
+    printArray(translate_engines)
+    selected_engine = askSelectOptionQuestion(
+        "Select the Translation Engine you want to use:",
+        min=1,
+        max=2,
+    )
+
+    translate_engine = translate_engines[selected_engine - 1]
     translation_object = readJSON(source_file)
 
     # Clean the tag elements <hl><hl/> from the raw data
