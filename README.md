@@ -17,7 +17,6 @@ This is a python script that allows you to automate translation of Next-Intl mes
 
 To run the script you will need:-
 - CMD or terminal access as Admin
-- Git
 - Python 3.11+
 - At least one Next-Intl message file(eg:- "en.json")
 - Exact ISO-639(set-1) language code (eg:- "en","es","de"...) of the source and target language.
@@ -31,5 +30,7 @@ To run the script you will need:-
    - The path to the folder you want to save the output. File names will be the ISO-639 code of the target language.
    - The ISO-639(set-1) code for your source language.
    - The ISO-639(set-1) code for your target language.
-   - The translation engine you want to use. (Results will vary depending on the engine you choose). 
+   - The translation engine you want to use. (Results will vary depending on the engine you choose).
+4. Wait for the script to finish.
+
 
