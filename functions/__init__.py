@@ -1,2 +1,3 @@
 from .playwright_translator import playwright_translator
 from .replace_strings_in_object import replace_strings_in_object
+from .remove_tag_elements import remove_tag_elements

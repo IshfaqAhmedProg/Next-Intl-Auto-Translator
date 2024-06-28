@@ -1,7 +1,6 @@
 # replace_strings_in_object.py
 from typing import Callable, Any
 import inspect
-import asyncio
 
 
 def replace_strings_in_object(func: Callable[..., str]):
