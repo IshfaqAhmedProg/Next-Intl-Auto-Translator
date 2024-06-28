@@ -28,6 +28,7 @@ To run the script you will need:-
 2. Open terminal or CMD as admin and run `run.bat` for Windows, and `run.sh` for UNIX like systems.
 3. After the dependencies have installed you will be asked for 
    - The path to your Next-Intl message file.
+   - The path to the folder you want to save the output. File names will be the ISO-639 code of the target language.
    - The ISO-639(set-1) code for your source language.
    - The ISO-639(set-1) code for your target language.
    - The translation engine you want to use. (Results will vary depending on the engine you choose). 

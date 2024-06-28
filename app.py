@@ -25,7 +25,13 @@ async def main():
 
     # Get all the user inputs
     source_file = getFilePath(
-        "\nEnter the path of the json file containing the source text:\n", ".json"
+        "\nEnter the path of the json file containing the source text:\n",
+        ".json",
+        folder=False,
+    )
+    output_folder = getFilePath(
+        "\nEnter the path of the folder where you want to store the output jsons:",
+        folder=True,
     )
     source_lang = input(
         "\nEnter the language of your source text in ISO-639 format (Defaults to 'en'):\neg:- 'en' for English, 'ar' for Arabic\n"
@@ -70,7 +76,7 @@ async def main():
     translation_object_str = json.dumps(translation_object, ensure_ascii=False)
 
     # writing out the file
-    with open(f"{target_lang}-{translate_engine}.json", "w", encoding="utf-8") as f:
+    with open(f"{output_folder}/{target_lang}.json", "w", encoding="utf-8") as f:
         f.write(translation_object_str)
     print(f"Total time taken to translate {time.time()-translation_tick}s")
 
