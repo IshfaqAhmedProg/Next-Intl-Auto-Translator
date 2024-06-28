@@ -88,7 +88,7 @@ async def playwright_translator(
                 target_elements = await page.query_selector_all(target_element_selector)
 
             # select the target text using .lRu31 and store the first instance of it
-            await page.screenshot(path=f"images/{format_long_text(source_text,10)}.png")
+            # await page.screenshot(path=f"images/{format_long_text(source_text,10)}.png")
             target_text = await target_elements[0].inner_text()
             await browser.close()
 
