@@ -13,11 +13,10 @@ from pypeepa import (
     askSelectOptionQuestion,
     printArray,
 )
-import re
 
 
 source_lang = "en"
-translate_engine = "Deepl"
+translate_engine = "Google"
 translate_engines = ["Google", "Deepl"]
 
 
