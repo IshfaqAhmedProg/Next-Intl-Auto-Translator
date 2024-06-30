@@ -72,7 +72,7 @@ async def playwright_translator(
                 )
                 # wait for the target_element to not have the undesired_class
                 await expect(page.locator(target_element_selector)).not_to_have_class(
-                    undesired_class
+                    undesired_class, timeout=5000
                 )
                 # then query for the target_element
                 target_elements = await page.query_selector_all(target_element_selector)
